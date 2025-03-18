@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Profit Calculator</title>
+    <link rel="stylesheet" href="static/style.css">
+    <!-- Add responsive CSS for mobile devices -->
+    <link rel="stylesheet" href="static/css/fixed.css">
+    <link rel="stylesheet" href="static/css/responsive.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>NFT Profit Calculator</h2>
+            <!-- Navigation tabs -->
+            <div class="nav-tabs">
+                <a href="index.html" class="nav-tab active">Compound Calculator</a>
+                <a href="fixed.html" class="nav-tab">Fixed Calculator</a>
+            </div>
+            
+            <form id="calculatorForm">
+                <div class="form-group">
+                    <label for="numDevices">Number of Devices (1-10):</label>
+                    <input type="number" id="numDevices" min="1" max="10" value="5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="initialDeposit">Initial Deposit per Device (USD):</label>
+                    <input type="number" id="initialDeposit" min="100" step="0.01" value="200" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="worstCase">Worst Case Trade % (80-100):</label>
+                    <input type="number" id="worstCase" min="70" max="100" value="70" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bestCase">Best Case Trade % (80-100):</label>
+                    <input type="number" id="bestCase" min="80" max="100" value="85" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="days">Simulation Days (1-365):</label>
+                    <input type="number" id="days" min="1" max="365" value="30" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">Calculate</button>
+                <button type="button" id="exportBtn" class="btn-secondary">Export CSV</button>
+                <button type="button" id="exportPdfBtn" class="btn-secondary">Export PDF</button>
+            </form>
+        </aside>
+        
+        <main class="main-content">
+            <div id="deviceTabs" class="device-tabs"></div>
+            <div class="table-container">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>StartingB</th>
+                            <th>Traded</th>
+                            <th>Profit</th>
+                            <th>Cumulative</th>
+                            <th>New Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="summary" class="summary">
+                <div class="summary-item">
+                    <span>Final Balance:</span>
+                    <span id="finalBalance">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Total Profit:</span>
+                    <span id="totalProfit">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>ROI:</span>
+                    <span id="roi">0%</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Include the jsPDF library and plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    
+    <!-- Include our calculator modules -->
+    <script src="static/js/calculators/compound-calculator.js"></script>
+    <script src="static/js/pdf-generators/compound-pdf-generator.js"></script>
+    <script src="static/js/main.js"></script>
+</body>
+</html>

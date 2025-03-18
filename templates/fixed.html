@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Interest Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Add additional styles specific to fixed calculator -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fixed.css') }}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Fixed Interest Calculator</h2>
+            <!-- Navigation tabs -->
+            <div class="nav-tabs">
+                <a href="/" class="nav-tab">Compound Calculator</a>
+                <a href="/fixed" class="nav-tab active">Fixed Calculator</a>
+            </div>
+            
+            <form id="fixedCalculatorForm">
+                <div class="form-group">
+                    <label for="principal">Principal Amount (USD):</label>
+                    <input type="number" id="principal" min="1" step="0.01" value="400" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dailyRate">Daily Interest Rate (%):</label>
+                    <input type="number" id="dailyRate" min="0.1" max="10" step="0.1" value="3.5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fixedDays">Number of Days (1-365):</label>
+                    <input type="number" id="fixedDays" min="1" max="365" value="90" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">Calculate</button>
+                <button type="button" id="exportFixedCsvBtn" class="btn-secondary">Export CSV</button>
+                <button type="button" id="exportFixedPdfBtn" class="btn-secondary">Export PDF</button>
+            </form>
+        </aside>
+        
+        <main class="main-content">
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <h3>Daily Interest</h3>
+                    <div id="dailyInterestCalc" class="calculation-box">
+                        <div class="calc-row">
+                            <span id="principalDisplay">400</span>
+                            <span>×</span>
+                            <span id="rateDisplay">3.5%</span>
+                        </div>
+                        <div class="calc-result">
+                            <span id="dailyInterestResult">$14.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <h3>Total Interest</h3>
+                    <div id="totalInterestCalc" class="calculation-box">
+                        <div class="calc-row">
+                            <span id="dailyInterestDisplay">$14.00</span>
+                            <span>×</span>
+                            <span id="daysDisplay">90 days</span>
+                        </div>
+                        <div class="calc-result">
+                            <span id="totalInterestResult">$1,260.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <h3>Total Payout</h3>
+                    <div id="totalPayoutCalc" class="calculation-box">
+                        <div class="calc-row">
+                            <span id="principalPayoutDisplay">$400.00</span>
+                            <span>+</span>
+                            <span id="interestPayoutDisplay">$1,260.00</span>
+                        </div>
+                        <div class="calc-result">
+                            <span id="totalPayoutResult">$1,660.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table id="fixedResultsTable">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Principal</th>
+                            <th>Daily Interest</th>
+                            <th>Cumulative Interest</th>
+                            <th>Current Value</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <!-- Add the fixed calculator JavaScript file -->
+    <script src="{{ url_for('static', filename='js/fixed.js') }}"></script>
+</body>
+</html>

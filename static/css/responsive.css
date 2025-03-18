@@ -1,0 +1,130 @@
+/**
+ * Responsive CSS for NFT Profit Calculator
+ * 
+ * This file contains responsive design styles to ensure the application
+ * is usable on mobile devices and smaller screens.
+ */
+
+/* Base responsive styles for all screen sizes */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Medium screens (tablets, small laptops) */
+@media screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .sidebar {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+    
+    .main-content {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .device-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .device-tab {
+        margin-bottom: 10px;
+    }
+    
+    .summary-cards {
+        flex-direction: column;
+    }
+    
+    .summary-card {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+/* Small screens (mobile phones) */
+@media screen and (max-width: 768px) {
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    table {
+        min-width: 600px; /* Ensure table is wide enough to show all columns */
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .nav-tabs {
+        flex-direction: column;
+    }
+    
+    .nav-tab {
+        width: 100%;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    
+    .summary {
+        flex-direction: column;
+    }
+    
+    .summary-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .calculation-box {
+        padding: 10px;
+    }
+    
+    .calc-row, .calc-result {
+        font-size: 0.9rem;
+    }
+}
+
+/* Print styles for better PDF and print output */
+@media print {
+    .sidebar, .nav-tabs, .btn-primary, .btn-secondary {
+        display: none;
+    }
+    
+    .container {
+        display: block;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        border: 1px solid #333;
+    }
+}
